@@ -1,0 +1,10 @@
+^C:\USERS\USER\GOOGLE DRIVE\BACKUP DESKTOP 25052021\FLUTTER_PROJECT\MPBSINDIA\BUILD\WINDOWS\CMAKEFILES\39C351865640F61694097C58EFC74B0A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/user/Google Drive/Backup desktop 25052021/Flutter_Project/MPBSINDIA/windows" "-BC:/Users/user/Google Drive/Backup desktop 25052021/Flutter_Project/MPBSINDIA/build/windows" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/user/Google Drive/Backup desktop 25052021/Flutter_Project/MPBSINDIA/build/windows/mpbsindia.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
