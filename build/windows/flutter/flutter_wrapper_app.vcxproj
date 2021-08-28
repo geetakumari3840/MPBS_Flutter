@@ -19,7 +19,6 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{50772973-0C94-354F-B07D-F8F7F38A9680}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>flutter_wrapper_app</ProjectName>

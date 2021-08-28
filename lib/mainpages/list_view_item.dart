@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mpbsindia/subpages/sub_ao.dart';
+import 'package:mpbsindia/subpages/sub_bank.dart';
+import 'package:mpbsindia/subpages/sub_qr.dart';
+import 'package:mpbsindia/subpages/sub_registration.dart';
+import 'package:mpbsindia/subpages/sub_thevision.dart';
+import 'package:mpbsindia/subpages/sub_wwa.dart';
 
 class ListViewItems extends StatelessWidget {
   const ListViewItems({Key? key}) : super(key: key);
@@ -54,7 +60,7 @@ class ListViewItems extends StatelessWidget {
               Icons.group,
               color: Colors.white,
             ),
-            title: Text("My Self",
+            title: Text("About Us",
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
@@ -62,23 +68,10 @@ class ListViewItems extends StatelessWidget {
             children: <Widget>[
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/test');
-                },
-                leading: Icon(
-                  Icons.arrow_right,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  'About Us',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/test');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubWWA()),
+                  );
                 },
                 leading: Icon(
                   Icons.arrow_right,
@@ -94,7 +87,10 @@ class ListViewItems extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubVision()),
+                  );
                 },
                 leading: Icon(
                   Icons.arrow_right,
@@ -110,7 +106,10 @@ class ListViewItems extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubAO()),
+                  );
                 },
                 leading: Icon(
                   Icons.arrow_right,
@@ -118,6 +117,25 @@ class ListViewItems extends StatelessWidget {
                 ),
                 title: Text(
                   'Aim & Objective',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubRegistration()),
+                  );
+                },
+                leading: Icon(
+                  Icons.app_registration,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'Registration',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
@@ -344,21 +362,94 @@ class ListViewItems extends StatelessWidget {
               ),
             ],
           ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/test');
-            },
+          ExpansionTile(
             leading: Icon(
               Icons.save,
               color: Colors.white,
             ),
-            title: Text(
-              'Donation',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
+            title: Text("Donation",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                )),
+            children: <Widget>[
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubQR()),
+                  );
+                },
+                leading: Icon(
+                  Icons.arrow_right,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'QR Code',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
               ),
-            ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubQR()),
+                  );
+                },
+                leading: Icon(
+                  Icons.arrow_right,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'PayTm',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubBank()),
+                  );
+                },
+                leading: Icon(
+                  Icons.arrow_right,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'Bank',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SubQR()),
+                  );
+                },
+                leading: Icon(
+                  Icons.arrow_right,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'Online',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
           ListTile(
             onTap: () {

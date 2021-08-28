@@ -19,7 +19,6 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{83D0DEB9-1B98-39E4-9689-D94A6FE7E83F}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>url_launcher_windows_plugin</ProjectName>

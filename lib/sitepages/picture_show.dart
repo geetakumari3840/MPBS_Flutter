@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:carousel_pro/carousel_pro.dart';
 
 class PicShow extends StatelessWidget {
@@ -22,7 +23,7 @@ class PicShow extends StatelessWidget {
               ExactAssetImage("assets/ourwork/104.jpg"),
               ExactAssetImage("assets/ourwork/105.jpg"),
               ExactAssetImage("assets/ourwork/106.jpg"),
-              ExactAssetImage("assets/ourwork/107.jpg"),
+              // ExactAssetImage("assets/ourwork/107.jpg"),
               // ExactAssetImage("assets/ourwork/108.jpg"),
               // ExactAssetImage("assets/ourwork/109.jpg"),
               // ExactAssetImage("assets/ourwork/110.jpg"),

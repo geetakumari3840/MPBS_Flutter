@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 class FooterPage extends StatelessWidget {
   const FooterPage({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class FooterPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 10,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold)),
         ),
       ),

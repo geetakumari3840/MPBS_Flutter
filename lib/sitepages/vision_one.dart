@@ -5,28 +5,41 @@ class VisionOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Wrap(
+    return Container(
+      color: Colors.white,
+      child: Column(
         children: <Widget>[
-          Image.asset("assets/images/mpbsindia_logo.png"),
-          SizedBox(
-            height: 20.0,
-          ),
-          ListTile(
-            title: Text("Life should be great rather than long",
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold)),
-            subtitle: Text("Dr. B. R. Ambedkar",
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold)),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
+          Row(children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                alignment: Alignment.center,
+                height: 100.0,
+                child: Image.asset(
+                  'assets/images/amb1.png',
+                  fit: BoxFit.contain,
+                  // height: 200,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 7,
+              child: ListTile(
+                title: Text("Life should be great rather than long",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
+                subtitle: Text("Dr. B. R. Ambedkar",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ]),
         ],
       ),
     );

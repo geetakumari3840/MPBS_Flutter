@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mpbsindia/subpages/construction.dart';
+import 'package:mpbsindia/subpages/sub_daa_info.dart';
 
 class InfoPage extends StatelessWidget {
   // const ({ Key? key }) : super(key: key);
@@ -143,21 +145,32 @@ class InfoPage extends StatelessWidget {
                       primary: Colors.brown, // background
                       onPrimary: Colors.white, // foreground
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SubDaaInfo()),
+                      );
+                    },
                     child: Text(
                       'जानकारी',
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 80.0,
+                  width: 85.0,
                   height: 30.0,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.green, // background
                       onPrimary: Colors.white, // foreground
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SubConstruction()),
+                      );
+                    },
                     child: Text(
                       'पंजीकरण',
                     ),
@@ -171,7 +184,13 @@ class InfoPage extends StatelessWidget {
                       primary: Colors.blue, // background
                       onPrimary: Colors.white, // foreground
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SubConstruction()),
+                      );
+                    },
                     child: Text(
                       'लॉग इन',
                     ),
@@ -191,7 +210,13 @@ class InfoPage extends StatelessWidget {
                     primary: Colors.red, // background
                     onPrimary: Colors.white, // foreground
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SubConstruction()),
+                    );
+                  },
                   child: Text(
                     'आवेदन फॉर्म की स्थिति',
                     style: TextStyle(

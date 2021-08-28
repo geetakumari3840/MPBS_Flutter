@@ -1,268 +1,222 @@
 import 'package:flutter/material.dart';
+import 'package:mpbsindia/subpages/sub_ao.dart';
+import 'package:mpbsindia/subpages/sub_registration.dart';
+import 'package:mpbsindia/subpages/sub_thevision.dart';
+import 'package:mpbsindia/subpages/sub_wwa.dart';
 
 class AboutUsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Container(
-        color: Colors.white,
-        child: Column(children: [
-          Container(
-            color: Colors.blue,
-            width: double.infinity,
-            // decoration: BoxDecoration(
-            //     border: Border.all(
-            //       color: Colors.red,
-            //     ),
-            //     borderRadius: BorderRadius.all(Radius.circular(20))),
-            //     borderRadius: BorderRadius.only(
-            // topRight: Radius.circular(40.0),
-            // bottomRight: Radius.circular(40.0),
-            // topLeft: Radius.circular(40.0),
-            // bottomLeft: Radius.circular(40.0)),
-            child: ListTile(
-              leading: Icon(
-                Icons.group,
+    return Container(
+      color: Colors.white,
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              decoration: BoxDecoration(
                 color: Colors.white,
-                size: 30,
+                // border: Border.all(
+                //   color: Colors.black,
+                //   width: 2,
+                // ),
+                boxShadow: [
+                  new BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 10.0,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(12),
               ),
-              title: Text(
-                'My Self',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          // Divider(color: Colors.black),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 20.0),
-            height: 150,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
+              child: Column(children: [
                 Container(
-                  width: 100.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.volume_up,
-                            color: Color.fromRGBO(0, 0, 255, 1),
-                            size: 60,
-                          ),
-                          tooltip: 'Increase volume by 10',
-                          onPressed: () {},
-                        ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF4F5F7),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  width: double.infinity,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.ac_unit_sharp,
+                      color: Color.fromRGBO(0, 0, 255, 1),
+                      size: 30,
+                    ),
+                    title: Text(
+                      'About Us',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromRGBO(0, 0, 255, 1),
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        'About Us',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ),
-                Container(
-                  width: 100.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.volume_up,
-                            color: Color.fromRGBO(0, 0, 255, 1),
-                            size: 60,
-                          ),
-                          tooltip: 'Increase volume by 10',
-                          onPressed: () {},
+                SizedBox(height: 20.0),
+                Wrap(
+                  // margin: EdgeInsets.symmetric(vertical: 10.0),
+                  // height: 120,
+                  spacing: 10.0,
+                  runSpacing: 30.0,
+                  children: <Widget>[
+                    InkWell(
+                      child: Container(
+                        // color: Colors.yellow,
+                        width: 70.0,
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const <Widget>[
+                            Icon(
+                              Icons.groups,
+                              color: Colors.blue,
+                              size: 50.0,
+                            ),
+                            Text(
+                              'Who We Are',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Text(
-                        'Who We Are',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 100.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.volume_up,
-                            color: Color.fromRGBO(0, 0, 255, 1),
-                            size: 60,
-                          ),
-                          tooltip: 'Increase volume by 10',
-                          onPressed: () {},
-                        ),
-                      ),
-                      Text(
-                        'The Vision',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 100.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.volume_up,
-                            color: Color.fromRGBO(0, 0, 255, 1),
-                            size: 60,
-                          ),
-                          tooltip: 'Increase volume by 10',
-                          onPressed: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SubWWA()),
+                        );
+                      },
+                    ),
+                    InkWell(
+                      child: Container(
+                        // color: Colors.yellow,
+                        width: 70.0,
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const <Widget>[
+                            Icon(
+                              Icons.visibility,
+                              color: Colors.blue,
+                              size: 50.0,
+                            ),
+                            Text(
+                              'The Vision',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Text(
-                        'Aim & Objective',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SubVision()),
+                        );
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: InkWell(
+                        child: Container(
+                          // color: Colors.yellow,
+                          width: 85.0,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const <Widget>[
+                              Icon(
+                                Icons.emoji_objects_outlined,
+                                color: Colors.blue,
+                                size: 50.0,
+                              ),
+                              Text(
+                                'Aim & Objective',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      )
-                    ],
-                  ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SubAO()),
+                          );
+                        },
+                      ),
+                    ),
+                    InkWell(
+                      child: Container(
+                        width: 75.0,
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          // mainAxisSize: MainAxisSize.min,
+                          children: const <Widget>[
+                            Icon(
+                              Icons.app_registration,
+                              color: Colors.blue,
+                              size: 50.0,
+                            ),
+                            Text(
+                              'Registration',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SubRegistration()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(6.0),
-                //   child: Column(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: <Widget>[
-                //       Icon(
-                //         Icons.lightbulb_outline,
-                //         color: Colors.black,
-                //         size: 60,
-                //       ),
-                //       Container(
-                //         color: Colors.yellow.shade600,
-                //         // padding: const EdgeInsets.all(8),
-                //         width: 200.0,
-                //         height: 100.0,
-                //         child: Text(
-                //           'ajay ajayajayaj ayajayaj ayajay ayajay ayajay ayajay ajay',
-                //           textAlign: TextAlign.center,
-                //           style: TextStyle(
-                //             color: Colors.black,
-                //             fontSize: 20,
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Container(
-                //   color: Colors.red,
-                //   width: 200.0,
-                //   child: Text(
-                //     'ajay',
-                //     textAlign: TextAlign.center,
-                //     style: TextStyle(
-                //       color: Colors.yellowAccent,
-                //       fontSize: 20,
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   width: 200.0,
-                //   color: Colors.yellow,
-                //   child: Card(
-                //     child: ListTile(
-                //       onTap: () {
-                //         Navigator.of(context).pushReplacementNamed('/');
-                //       },
-                //       leading: Icon(
-                //         Icons.home,
-                //         color: Colors.black,
-                //         size: 40.0,
-                //       ),
-                //       title: Text("Who We Are"),
-                //       // subtitle: Text("Subtitle Image"),
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   width: 200.0,
-                //   child: Card(
-                //     child: Wrap(
-                //       children: <Widget>[
-                //         // icon:
-                //         // Image.asset("assets/images/mpbsindia_logo.png"),
-                //         ListTile(
-                //           onTap: () {
-                //             Navigator.of(context).pushReplacementNamed('/');
-                //           },
-                //           leading: Icon(
-                //             Icons.cloud,
-                //             color: Colors.black,
-                //             size: 40.0,
-                //           ),
-                //           title: Text("The Vision"),
-                //           // subtitle: Text("Subtitle Image"),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   width: 200.0,
-                //   child: Card(
-                //     child: Wrap(
-                //       children: <Widget>[
-                //         // icon:
-                //         // Image.asset("assets/images/mpbsindia_logo.png"),
-                //         ListTile(
-                //           onTap: () {
-                //             Navigator.of(context).pushReplacementNamed('/');
-                //           },
-                //           leading: Icon(
-                //             Icons.arrow_circle_down_rounded,
-                //             color: Colors.black,
-                //             size: 40.0,
-                //           ),
-                //           title: Text("Aim & Objective"),
-                //           // subtitle: Text("Subtitle Image"),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
-          ),
-        ]),
-      ),
+                SizedBox(height: 20.0),
+              ]))),
     );
   }
 }
+
+//  Container(
+//                       width: 80.0,
+//                       child: ElevatedButton(
+//                         child: Column(
+//                           children: const <Widget>[
+//                             Icon(
+//                               Icons.group_work_outlined,
+//                               color: Colors.blue,
+//                               size: 50.0,
+//                             ),
+//                             Text(
+//                               'Who We Are',
+//                               textAlign: TextAlign.center,
+//                               style: TextStyle(
+//                                 color: Colors.black,
+//                                 fontSize: 15,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                         onPressed: () {
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(builder: (context) => SubWWA()),
+//                           );
+//                         },
+//                         style: ButtonStyle(
+//                           backgroundColor:
+//                               MaterialStateProperty.all(Colors.white),
+//                         ),
+//                       ),
+//                     ),

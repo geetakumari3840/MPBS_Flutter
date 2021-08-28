@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mpbsindia/mainpages/about_us_list.dart';
 import 'package:mpbsindia/mainpages/appbar_page.dart';
+import 'package:mpbsindia/mainpages/content_us_list.dart';
+import 'package:mpbsindia/mainpages/donation_list.dart';
 import 'package:mpbsindia/mainpages/drawer_mpbs.dart';
-import 'package:mpbsindia/mainpages/list_view_item.dart';
+// import 'package:mpbsindia/mainpages/list_view_item.dart';
+import 'package:mpbsindia/mainpages/our_institute_list.dart';
+import 'package:mpbsindia/mainpages/our_work_list.dart';
+import 'package:mpbsindia/mainpages/photo_media_list.dart';
 import 'package:mpbsindia/mainpages/responsive_help.dart';
 import 'package:mpbsindia/sitepages/ao_four.dart';
 import 'package:mpbsindia/sitepages/ao_one.dart';
@@ -21,6 +26,9 @@ import 'package:mpbsindia/sitepages/wwa_page.dart';
 import 'package:mpbsindia/sitepages/importnt_news.dart';
 import 'package:mpbsindia/sitepages/picture_show.dart';
 import 'package:mpbsindia/sitepages/quate_page.dart';
+import 'package:mpbsindia/subpages/sub_donation_one.dart';
+import 'package:mpbsindia/subpages/sub_donation_two.dart';
+import 'package:mpbsindia/subpages/sub_vision_one.dart';
 
 class HomePage extends StatefulWidget {
   // const HomePage({Key key}) : super(key: key);
@@ -41,31 +49,22 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: <Widget>[
               Container(
-                  color: Colors.grey,
+                  color: Colors.white,
                   child: ResponsiveWidget(
 //Mobile
                     mobile: Column(
                       children: [
                         PicShow(),
                         InfoPage(),
-                        Container(
-                          child: AboutUsList(),
-                        ),
-                        // ImpNews(),
-
-                        // Quate(),
-                        // WwaPage(),
-                        // VisionOne(),
-                        // VisionTwo(),
-                        // MpbsDonate(),
-                        // AoOne(),
-                        // AoTwo(),
-                        // AoThree(),
-                        // AoFour(),
-                        // OurWork(),
-                        // ContactOne(),
-                        // ContactTwo(),
-                        // ContactThree(),
+                        AboutUsList(),
+                        SubDonationOne(),
+                        DonationList(),
+                        SubVisionOne(),
+                        OurInstituteList(),
+                        SubDonationTwo(),
+                        PhotoMediaList(),
+                        OurWorkList(),
+                        ContentUsList(),
                         FooterPage(),
                       ],
                     ),
