@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mpbsindia/addEditUser.dart';
 import 'package:mpbsindia/apidemo/mainapidemo.dart';
 import 'package:mpbsindia/codeigniter_login/login.dart';
 import 'package:mpbsindia/codeigniter_login/screens/home.dart';
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/sendmyapp",
+      initialRoute: "/addedituser",
       routes: {
         "/": (context) => HomePage(),
         "/test": (context) => TestPage(),
@@ -67,7 +68,8 @@ class _MyAppState extends State<MyApp> {
         "/login": (context) => MyAppc(),
         "/apisqlview": (context) => ViewMyApp(),
         "/fatchmyapp": (context) => FatchMyApp(),
-        "/sendmyapp": (context) => SendMyApp(),
+        "/addedituser": (context) => AddEditUser(),
+        // "/sendmyapp": (context) => SendMyApp(),
         "/sqlphp": (context) => MyAppSql(),
         '/signin': (BuildContext context) => new SignIn(),
         '/signup': (BuildContext context) => new SignUp(),
