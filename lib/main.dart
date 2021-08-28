@@ -8,6 +8,7 @@ import 'package:mpbsindia/codeigniter_login/login.dart';
 import 'package:mpbsindia/codeigniter_login/screens/home.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signin.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
+import 'package:mpbsindia/login_mpbs/send_data.dart';
 import 'package:mpbsindia/mainpages/myphpsql.dart';
 import 'package:mpbsindia/mainpages/registe_user.dart';
 import 'package:mpbsindia/mainpages/view_registratin.dart';
@@ -55,7 +56,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/fatchmyapp",
+      initialRoute: "/sendmyapp",
       routes: {
         "/": (context) => HomePage(),
         "/test": (context) => TestPage(),
@@ -66,6 +67,7 @@ class _MyAppState extends State<MyApp> {
         "/login": (context) => MyAppc(),
         "/apisqlview": (context) => ViewMyApp(),
         "/fatchmyapp": (context) => FatchMyApp(),
+        "/sendmyapp": (context) => SendMyApp(),
         "/sqlphp": (context) => MyAppSql(),
         '/signin': (BuildContext context) => new SignIn(),
         '/signup': (BuildContext context) => new SignUp(),
