@@ -3,6 +3,6 @@
 3    package="com.example.maps_launcher" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->E:\Software\flutter\.pub-cache\hosted\pub.dartlang.org\maps_launcher-2.0.0\android\src\main\AndroidManifest.xml
+5-->E:\flutter\.pub-cache\hosted\pub.dartlang.org\maps_launcher-2.0.0\android\src\main\AndroidManifest.xml
 6
 7</manifest>

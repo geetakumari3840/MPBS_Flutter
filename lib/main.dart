@@ -4,14 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mpbsindia/addEditUser.dart';
-import 'package:mpbsindia/apidemo/mainapidemo.dart';
+import 'package:mpbsindia/login_mpbs/mainapidemo.dart';
 import 'package:mpbsindia/codeigniter_login/login.dart';
 import 'package:mpbsindia/codeigniter_login/screens/home.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signin.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
 import 'package:mpbsindia/login_mpbs/send_data.dart';
 import 'package:mpbsindia/mainpages/myphpsql.dart';
-import 'package:mpbsindia/mainpages/registe_user.dart';
+import 'package:mpbsindia/login_mpbs/registe_user.dart';
 import 'package:mpbsindia/mainpages/view_registratin.dart';
 import 'package:mpbsindia/test_page/codepen_nav.dart';
 import 'package:mpbsindia/test_page/fatch_data_internet.dart';
@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/addedituser",
+      initialRoute: "/apisql",
       routes: {
         "/": (context) => HomePage(),
         "/test": (context) => TestPage(),

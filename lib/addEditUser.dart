@@ -49,7 +49,8 @@ class _AddEditUserState extends State<AddEditUser> {
                   Toast.show('This filed is required.', context,
                       gravity: Toast.CENTER, duration: 2);
                 } else {
-                  UserModel userModel = UserModel(id: 0, email: '', name: '');
+                  UserModel userModel =
+                      UserModel(id: 0, email: 'aa', name: 'bb');
                   add(userModel);
                 }
               },
