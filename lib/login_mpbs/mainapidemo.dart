@@ -67,13 +67,21 @@ class _MainapiState extends State<Mainapi> {
               itemCount: snap.length,
               itemBuilder: (context, index) {
                 return ListTile(
+                    leading: GestureDetector(child: Icon(Icons.edit)),
+                    onTap: () {
+                      debugPrint('Edit Clicked');
+                    },
                     // title: CircleAvatar(
                     //   child: Text("${snap[index]['name'][1]}"),
                     // ),
                     title: Text("Name : ${snap[index]['name']}"),
                     subtitle: Text("Email : ${snap[index]['email']}"),
-                    trailing:
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete)));
+                    trailing: GestureDetector(
+                      child: Icon(Icons.delete),
+                      onTap: () {
+                        debugPrint('Delete Clicked');
+                      },
+                    ));
               });
         },
       ),

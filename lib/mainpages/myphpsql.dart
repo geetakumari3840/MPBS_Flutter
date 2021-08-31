@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mpbsindia/addEditUser.dart';
-import 'package:mpbsindia/model/userModel.dart';
-import 'package:mpbsindia/service/userService.dart';
+import 'package:mpbsindia/fluttercurd/addEditUser.dart';
+import 'package:mpbsindia/fluttercurd/model/userModel.dart';
+import 'package:mpbsindia/fluttercurd/service/userService.dart';
 // import 'package:toast/toast.dart';
 
 class MyAppSql extends StatefulWidget {

@@ -1,154 +1,126 @@
-// import 'dart:async';
-// import 'dart:convert';
+import 'dart:async';
+import 'dart:convert';
 
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:toast/toast.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-// Future<Album> createAlbum(String title) async {
-//   final response = await http.post(
-//     Uri.parse('https://jsonplaceholder.typicode.com/albums'),
-//     headers: <String, String>{
-//       'Content-Type': 'application/json; charset=UTF-8',
-//     },
-//     body: jsonEncode(<String, String>{
-//       'title': title,
-//     }),
-//   );
+Future<Album> fetchAlbum() async {
+  final response = await http.get(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+  );
 
-//   if (response.statusCode == 201) {
-//     // If the server did return a 201 CREATED response,
-//     // then parse the JSON.
-//     return Album.fromJson(jsonDecode(response.body));
-//   } else {
-//     // If the server did not return a 201 CREATED response,
-//     // then throw an exception.
-//     throw Exception('Failed to create album.');
-//   }
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response, then parse the JSON.
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response, then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+Future<Album> deleteAlbum(String id) async {
+  final http.Response response = await http.delete(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON. After deleting,
+    // you'll get an empty JSON `{}` response.
+    // Don't return `null`, otherwise `snapshot.hasData`
+    // will always return false on `FutureBuilder`.
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a "200 OK response",
+    // then throw an exception.
+    throw Exception('Failed to delete album.');
+  }
+}
+
+class Album {
+  final int? id;
+  final String? title;
+
+  Album({this.id, this.title});
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return Album(
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
+// void main() {
+//   runApp(const MyApp());
 // }
 
-// class Album {
-//   final int id;
-//   final String title;
+class DeleteMyApp extends StatefulWidget {
+  const DeleteMyApp({Key? key}) : super(key: key);
 
-//   Album({required this.id, required this.title});
+  @override
+  _DeleteMyAppState createState() {
+    return _DeleteMyAppState();
+  }
+}
 
-//   factory Album.fromJson(Map<String, dynamic> json) {
-//     return Album(
-//       id: json['id'],
-//       title: json['title'],
-//     );
-//   }
-// }
+class _DeleteMyAppState extends State<DeleteMyApp> {
+  late Future<Album> _futureAlbum;
 
-// // void main() {
-// //   runApp(const MyApp());
-// // }
+  @override
+  void initState() {
+    super.initState();
+    _futureAlbum = fetchAlbum();
+  }
 
-// class SendMyApp extends StatefulWidget {
-//   const SendMyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Delete Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Delete Data Example'),
+        ),
+        body: Center(
+          child: FutureBuilder<Album>(
+            future: _futureAlbum,
+            builder: (context, snapshot) {
+              // If the connection is done,
+              // check for response data or an error.
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(snapshot.data?.title ?? 'Deleted'),
+                      ElevatedButton(
+                        child: const Text('Delete Data'),
+                        onPressed: () {
+                          setState(() {
+                            _futureAlbum =
+                                deleteAlbum(snapshot.data!.id.toString());
+                          });
+                        },
+                      ),
+                    ],
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+              }
 
-//   @override
-//   _SendMyAppState createState() {
-//     return _SendMyAppState();
-//   }
-// }
-
-// class _SendMyAppState extends State<SendMyApp> {
-//   TextEditingController name = TextEditingController();
-//   TextEditingController mobile = TextEditingController();
-//   TextEditingController email = TextEditingController();
-//   TextEditingController pass = TextEditingController();
-//   TextEditingController repass = TextEditingController();
-//   TextEditingController dob = TextEditingController();
-//   TextEditingController captch = TextEditingController();
-
-//   // final TextEditingController _controller = TextEditingController();
-//   // Future<Album>? _futureAlbum;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Create Data Example',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: SingleChildScrollView(
-//         child: Scaffold(
-//           appBar: AppBar(
-//             title: const Text('Create Data Example'),
-//           ),
-//           body: Container(
-//             alignment: Alignment.center,
-//             padding: const EdgeInsets.all(8.0),
-//             child:
-//                 (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   Column buildColumn() {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: <Widget>[
-//         TextField(
-//           controller: name,
-//           decoration: const InputDecoration(hintText: 'Full Name'),
-//         ),
-//         TextField(
-//           controller: mobile,
-//           decoration: const InputDecoration(hintText: 'Mobile Number'),
-//         ),
-//         TextField(
-//           controller: email,
-//           decoration: const InputDecoration(hintText: 'Email Id'),
-//         ),
-//         TextField(
-//           controller: pass,
-//           decoration: const InputDecoration(hintText: 'Create Password'),
-//         ),
-//         TextField(
-//           controller: repass,
-//           decoration: const InputDecoration(hintText: 'Re-enter Password'),
-//         ),
-//         TextField(
-//           controller: dob,
-//           decoration: const InputDecoration(hintText: 'Captch'),
-//         ),
-//         TextField(
-//           controller: captch,
-//           decoration: const InputDecoration(hintText: 'Enter Title'),
-//         ),
-//         ElevatedButton(
-//           onPressed: () {
-//             if (name.text.isEmpty) {
-//               Toast.show('This filed is required.', context,
-//                   gravity: Toast.CENTER, duration: 2);
-//             } else {
-//               UserModel userModel = UserModel(id: 0, email: '', name: '');
-//               add(userModel);
-//             }
-//           },
-//           child: const Text('Submit'),
-//         ),
-//       ],
-//     );
-//   }
-
-//   FutureBuilder<Album> buildFutureBuilder() {
-//     return FutureBuilder<Album>(
-//       future: _futureAlbum,
-//       builder: (context, snapshot) {
-//         if (snapshot.hasData) {
-//           return Text("Data Send Succfully!!");
-//         } else if (snapshot.hasError) {
-//           return Text('${snapshot.error}');
-//         }
-
-//         return const CircularProgressIndicator();
-//       },
-//     );
-//   }
-// }
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
