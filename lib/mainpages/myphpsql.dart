@@ -14,7 +14,7 @@ class _MyAppSqlState extends State<MyAppSql> {
   bool loading = true;
 
   getAllUser() async {
-    userList = await UserService().getUserData();
+    userList = await UserService().getUser();
     setState(() {
       loading = false;
     });
@@ -60,8 +60,3 @@ class _MyAppSqlState extends State<MyAppSql> {
     );
   }
 }
-      // body: loading
-      //     ? Center(
-      //         child: CircularProgressIndicator(),
-      //       )
-      //     : ListView.builder(

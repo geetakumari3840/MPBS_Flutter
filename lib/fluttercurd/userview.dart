@@ -24,10 +24,11 @@ class _UserViewState extends State<UserView> {
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getAllUser();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -46,15 +47,18 @@ class _UserViewState extends State<UserView> {
           ),
         ],
       ),
-      body: loading ? Center(child: CircularProgressIndicator(),)
-      itemCount: userList.lenght,
-      itemBuilder:(context,index){
-        userModel user = userList[index];
-        return ListTile(
-          title: Text(user.name),
-
-        )
-      }
+      body: loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              itemCount: userList.length,
+              itemBuilder: (context, index) {
+                UserModel user = userList[index];
+                return ListTile(
+                  title: Text(user.name),
+                );
+              }),
     );
   }
 }

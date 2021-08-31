@@ -22,11 +22,4 @@ class UserModel {
       "email": email,
     };
   }
-
-  Map<String, dynamic> userList() {
-    return {
-      "name": name,
-      "email": email,
-    };
-  }
 }
