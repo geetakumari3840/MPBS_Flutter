@@ -20,7 +20,7 @@ class _UserViewState extends State<UserView> {
     setState(() {
       loading = false;
     });
-    print("userList.length");
+    print("user : ${userList.length}");
   }
 
   @override
@@ -41,7 +41,7 @@ class _UserViewState extends State<UserView> {
                 MaterialPageRoute(
                   builder: (context) => AddEditUser(),
                 ),
-              );
+              ).then((value) => getAllUser());
             },
             icon: Icon(Icons.add),
           ),
@@ -56,8 +56,24 @@ class _UserViewState extends State<UserView> {
               itemBuilder: (context, index) {
                 UserModel user = userList[index];
                 return ListTile(
-                  title: Text(user.name),
-                );
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              AddEditUser(userModel: user, index: index),
+                        ),
+                      ).then((value) => getAllUser());
+                    },
+                    leading: GestureDetector(child: Icon(Icons.edit)),
+                    title: Text(user.name),
+                    subtitle: Text(user.email),
+                    trailing: GestureDetector(
+                      child: Icon(Icons.delete),
+                      onTap: () {
+                        debugPrint('Delete Clicked');
+                      },
+                    ));
               }),
     );
   }

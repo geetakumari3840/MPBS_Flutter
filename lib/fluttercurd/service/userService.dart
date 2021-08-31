@@ -11,7 +11,8 @@ class UserService {
 
   static const VIEW_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/view.php";
-
+  static const UPDATE_URL =
+      "https://chameleonlike-house.000webhostapp.com/fluttercrud/update.php";
   Future<String> addUser(UserModel userModel) async {
     final response =
         await http.post(Uri.parse(ADD_URL), body: userModel.toJsonAdd());
@@ -38,6 +39,17 @@ class UserService {
     } else {
       // return List<UserModel>();
       return <UserModel>[];
+    }
+  }
+
+  Future<String> updateUser(UserModel userModel) async {
+    final response =
+        await http.post(Uri.parse(UPDATE_URL), body: userModel.toJsonUpdate());
+    if (response.statusCode == 200) {
+      print("Add Response : " + response.body);
+      return response.body;
+    } else {
+      return "Error";
     }
   }
 }

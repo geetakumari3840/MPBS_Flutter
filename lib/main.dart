@@ -12,7 +12,6 @@ import 'package:mpbsindia/codeigniter_login/screens/signin.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
 import 'package:mpbsindia/login_mpbs/send_data.dart';
 import 'package:mpbsindia/login_mpbs/update_user.dart';
-import 'package:mpbsindia/mainpages/myphpsql.dart';
 import 'package:mpbsindia/login_mpbs/registe_user.dart';
 import 'package:mpbsindia/mainpages/view_registratin.dart';
 import 'package:mpbsindia/test_page/codepen_nav.dart';
@@ -68,7 +67,6 @@ class _MyAppState extends State<MyApp> {
         "/apisqlview": (context) => ViewMyApp(),
         "/fatchmyapp": (context) => FatchMyApp(),
         "/addedituser": (context) => AddEditUser(),
-        "/sqlphp": (context) => MyAppSql(),
         '/signin': (BuildContext context) => new SignIn(),
         '/signup': (BuildContext context) => new SignUp(),
         '/home': (BuildContext context) => new Home(),
