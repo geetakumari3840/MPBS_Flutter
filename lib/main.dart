@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mpbsindia/fluttercurd/addEditUser.dart';
 import 'package:mpbsindia/fluttercurd/userview.dart';
 import 'package:mpbsindia/login_mpbs/mainapidemo.dart';
 import 'package:mpbsindia/codeigniter_login/login.dart';
@@ -16,12 +15,9 @@ import 'package:mpbsindia/login_mpbs/registe_user.dart';
 import 'package:mpbsindia/mainpages/view_registratin.dart';
 import 'package:mpbsindia/test_page/codepen_nav.dart';
 import 'package:mpbsindia/test_page/fatch_data_internet.dart';
-import 'package:mpbsindia/test_page/login_page.dart';
 import 'package:mpbsindia/test_page/test1.dart';
 import 'mainpages/home_page.dart';
 import 'mainpages/responsive_page.dart';
-import 'utiles/routes.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -66,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         "/updatedata": (context) => UpdateMyApp(),
         "/apisqlview": (context) => ViewMyApp(),
         "/fatchmyapp": (context) => FatchMyApp(),
-        "/addedituser": (context) => AddEditUser(),
+        // "/addedituser": (context) => AddEditUser(),
         '/signin': (BuildContext context) => new SignIn(),
         '/signup': (BuildContext context) => new SignUp(),
         '/home': (BuildContext context) => new Home(),

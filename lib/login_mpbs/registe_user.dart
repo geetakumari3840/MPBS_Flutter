@@ -63,7 +63,7 @@ class RegisterUserState extends State {
         return AlertDialog(
           title: new Text(message),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -113,11 +113,11 @@ class RegisterUserState extends State {
                 decoration:
                     InputDecoration(hintText: 'Enter Your Password Here'),
               )),
-          RaisedButton(
+          ElevatedButton(
             onPressed: userRegistration,
-            color: Colors.green,
-            textColor: Colors.white,
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            // color: Colors.green,
+            // textColor: Colors.white,
+            // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: Text('Click Here To Register User Online'),
           ),
           Visibility(

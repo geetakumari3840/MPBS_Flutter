@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:mpbsindia/codeigniter_login/apis/api.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -335,6 +333,6 @@ class _SignUpState extends State<SignUp> {
     preferences.setString("name", name);
     preferences.setString("email", email);
     preferences.setString("id", id.toString());
-    preferences.commit();
+    // preferences.commit();
   }
 }

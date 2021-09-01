@@ -35,14 +35,11 @@ class _AddEditUserState extends State<AddEditUser> {
     });
   }
 
-  @override
   void iniState() {
     super.initState();
-    if (widget.index != null) {
-      editMode = true;
-      name.text = widget.userModel.name;
-      email.text = widget.userModel.email;
-    }
+    editMode = true;
+    name.text = widget.userModel.name;
+    email.text = widget.userModel.email;
   }
 
   @override
@@ -67,16 +64,23 @@ class _AddEditUserState extends State<AddEditUser> {
           ),
           ElevatedButton(
               onPressed: () {
-                if (name.text.isEmpty) {
-                  Toast.show('This filed is required.', context,
-                      gravity: Toast.CENTER, duration: 2);
-                } else {
+                if (editMode) {
                   UserModel userModel = UserModel(
-                    name: name.text,
-                    email: email.text,
-                    id: 0,
-                  );
-                  add(userModel);
+                      id: widget.userModel.id,
+                      name: name.text,
+                      email: email.text);
+                  update(userModel);
+                } else {
+                  if (name.text.isEmpty) {
+                    Toast.show('This filed is required.', context,
+                        gravity: Toast.CENTER, duration: 2);
+                  } else {
+                    UserModel userModel = UserModel(
+                        id: widget.userModel.id,
+                        name: name.text,
+                        email: email.text);
+                    update(userModel);
+                  }
                 }
               },
               child: Text(editMode ? "Update" : 'Save')),

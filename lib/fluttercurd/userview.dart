@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:mpbsindia/fluttercurd/addEditUser.dart';
 import 'package:mpbsindia/fluttercurd/model/userModel.dart';
 import 'package:mpbsindia/fluttercurd/service/userService.dart';
+import 'package:toast/toast.dart';
 
 class UserView extends StatefulWidget {
   const UserView({Key? key}) : super(key: key);
@@ -23,12 +23,23 @@ class _UserViewState extends State<UserView> {
     print("user : ${userList.length}");
   }
 
+  delete(UserModel userModel) async {
+    await UserService().deleteUser(userModel);
+    setState(() {
+      loading = false;
+      getAllUser();
+    });
+    Toast.show('Delete sucessfuly !!', context,
+        gravity: Toast.CENTER, duration: 2);
+  }
+
   @override
   void initState() {
     super.initState();
     getAllUser();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -60,18 +71,24 @@ class _UserViewState extends State<UserView> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              AddEditUser(userModel: user, index: index),
+                          builder: (context) => AddEditUser(
+                            userModel: user,
+                            index: index,
+                          ),
                         ),
                       ).then((value) => getAllUser());
                     },
-                    leading: GestureDetector(child: Icon(Icons.edit)),
+
+                    // leading: GestuText(user.name),reDetector(child: Icon(Icons.edit)),
+                    leading: CircleAvatar(
+                      child: Text(user.name[0]),
+                    ),
                     title: Text(user.name),
                     subtitle: Text(user.email),
-                    trailing: GestureDetector(
-                      child: Icon(Icons.delete),
-                      onTap: () {
-                        debugPrint('Delete Clicked');
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () {
+                        delete(user);
                       },
                     ));
               }),

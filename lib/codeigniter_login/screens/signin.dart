@@ -303,6 +303,6 @@ class _SignInState extends State<SignIn> {
     preferences.setString("name", name);
     preferences.setString("email", email);
     preferences.setString("id", id.toString());
-    preferences.commit();
+    // preferences.commit();
   }
 }

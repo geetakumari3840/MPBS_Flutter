@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mpbsindia/codeigniter_login/screens/home.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signin.dart';
-import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // void main() {
@@ -18,7 +17,6 @@ class MyAppc extends StatefulWidget {
 class _MyAppcState extends State<MyAppc> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPref();
   }

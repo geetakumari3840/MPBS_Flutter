@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:mpbsindia/fluttercurd/model/userModel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+
 // ignore: import_of_legacy_library_into_null_safe
 // import 'package:toast/toast.dart';
 
@@ -13,6 +14,8 @@ class UserService {
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/view.php";
   static const UPDATE_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/update.php";
+  static const DELETE_URL =
+      "https://chameleonlike-house.000webhostapp.com/fluttercrud/delete.php";
   Future<String> addUser(UserModel userModel) async {
     final response =
         await http.post(Uri.parse(ADD_URL), body: userModel.toJsonAdd());
@@ -46,7 +49,18 @@ class UserService {
     final response =
         await http.post(Uri.parse(UPDATE_URL), body: userModel.toJsonUpdate());
     if (response.statusCode == 200) {
-      print("Add Response : " + response.body);
+      print("Update Response : " + response.body);
+      return response.body;
+    } else {
+      return "Error";
+    }
+  }
+
+  Future<String> deleteUser(UserModel userModel) async {
+    final response =
+        await http.post(Uri.parse(DELETE_URL), body: userModel.toJsonDelete());
+    if (response.statusCode == 200) {
+      print("Delete Response : " + response.body);
       return response.body;
     } else {
       return "Error";
