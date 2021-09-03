@@ -12,7 +12,6 @@ import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
 import 'package:mpbsindia/login_mpbs/send_data.dart';
 import 'package:mpbsindia/login_mpbs/update_user.dart';
 import 'package:mpbsindia/login_mpbs/registe_user.dart';
-import 'package:mpbsindia/mainpages/view_registratin.dart';
 import 'package:mpbsindia/test_page/codepen_nav.dart';
 import 'package:mpbsindia/test_page/fatch_data_internet.dart';
 import 'package:mpbsindia/test_page/test1.dart';
@@ -60,7 +59,6 @@ class _MyAppState extends State<MyApp> {
         "/modelcrud": (context) => UserView(),
         "/deletedata": (context) => DeleteMyApp(),
         "/updatedata": (context) => UpdateMyApp(),
-        "/apisqlview": (context) => ViewMyApp(),
         "/fatchmyapp": (context) => FatchMyApp(),
         // "/addedituser": (context) => AddEditUser(),
         '/signin': (BuildContext context) => new SignIn(),

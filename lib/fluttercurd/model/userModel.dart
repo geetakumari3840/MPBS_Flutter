@@ -3,7 +3,7 @@ class UserModel {
   final String name;
   final String email;
 
-  UserModel({
+  UserModel(Set set, {
     required this.id,
     required this.name,
     required this.email,
@@ -16,6 +16,7 @@ class UserModel {
       email: json['email'] as String,
     );
   }
+  
   Map<String, dynamic> toJsonAdd() {
     return {
       "name": name,

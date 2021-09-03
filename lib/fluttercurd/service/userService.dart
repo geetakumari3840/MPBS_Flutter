@@ -3,19 +3,23 @@ import 'package:mpbsindia/fluttercurd/model/userModel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-// ignore: import_of_legacy_library_into_null_safe
-// import 'package:toast/toast.dart';
-
 class UserService {
   static const ADD_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/add.php";
-
   static const VIEW_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/view.php";
   static const UPDATE_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/update.php";
   static const DELETE_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/delete.php";
+
+
+
+  List<UserModel> userFormJson(String jsonString) {
+    final data = json.decode(jsonString);
+    return List<UserModel>.from(data.map((item) => UserModel.formJson(item)));
+  }
+
   Future<String> addUser(UserModel userModel) async {
     final response =
         await http.post(Uri.parse(ADD_URL), body: userModel.toJsonAdd());
@@ -26,13 +30,7 @@ class UserService {
       return "Error";
     }
   }
-
-  List<UserModel> userFormJson(String jsonString) {
-    final data = json.decode(jsonString);
-    return List<UserModel>.from(data.map((item) => UserModel.formJson(item)));
-  }
-
-  Future<List<UserModel>> getUser() async {
+  Future<List<UserModel>> getUserData() async {
     final response = await http.get(Uri.parse(VIEW_URL));
 
     if (response.statusCode == 200) {

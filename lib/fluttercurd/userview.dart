@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mpbsindia/fluttercurd/addEditUser.dart';
 import 'package:mpbsindia/fluttercurd/model/userModel.dart';
 import 'package:mpbsindia/fluttercurd/service/userService.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:toast/toast.dart';
 
 class UserView extends StatefulWidget {
-  const UserView({Key? key}) : super(key: key);
+  // const UserView({Key? key}) : super(key: key);
 
   @override
   _UserViewState createState() => _UserViewState();
@@ -13,12 +14,12 @@ class UserView extends StatefulWidget {
 
 class _UserViewState extends State<UserView> {
   late List<UserModel> userList;
-  bool loading = true;
+  bool leading = true;
 
   getAllUser() async {
-    userList = await UserService().getUser();
+    userList = await UserService().getUserData();
     setState(() {
-      loading = false;
+      leading = false;
     });
     print("user : ${userList.length}");
   }
@@ -26,7 +27,7 @@ class _UserViewState extends State<UserView> {
   delete(UserModel userModel) async {
     await UserService().deleteUser(userModel);
     setState(() {
-      loading = false;
+      leading = false;
       getAllUser();
     });
     Toast.show('Delete sucessfuly !!', context,
@@ -43,7 +44,7 @@ class _UserViewState extends State<UserView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MODEL CRUD'),
+        title: Text('MODEL CRUD VIEW DATA'),
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -58,7 +59,7 @@ class _UserViewState extends State<UserView> {
           ),
         ],
       ),
-      body: loading
+      body: leading
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -78,8 +79,6 @@ class _UserViewState extends State<UserView> {
                         ),
                       ).then((value) => getAllUser());
                     },
-
-                    // leading: GestuText(user.name),reDetector(child: Icon(Icons.edit)),
                     leading: CircleAvatar(
                       child: Text(user.name[0]),
                     ),

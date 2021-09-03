@@ -8,7 +8,9 @@ class AddEditUser extends StatefulWidget {
   // const AddEditUser({Key? key}) : super(key: key);
   final UserModel userModel;
   final int index;
+
   AddEditUser({required this.userModel, required this.index});
+
   @override
   _AddEditUserState createState() => _AddEditUserState();
 }
@@ -16,7 +18,9 @@ class AddEditUser extends StatefulWidget {
 class _AddEditUserState extends State<AddEditUser> {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
+
   bool editMode = false;
+
   add(UserModel userModel) async {
     await UserService().addUser(userModel).then((sucess) {
       Toast.show('Add sucessfuly !!', context,
@@ -38,8 +42,10 @@ class _AddEditUserState extends State<AddEditUser> {
   void iniState() {
     super.initState();
     editMode = true;
-    name.text = widget.userModel.name;
-    email.text = widget.userModel.email;
+    if (widget.index != 0) {
+      name.text = widget.userModel.name;
+      email.text = widget.userModel.email;
+    }
   }
 
   @override
