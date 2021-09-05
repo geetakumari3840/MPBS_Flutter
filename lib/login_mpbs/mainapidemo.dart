@@ -27,6 +27,17 @@ class _MainapiState extends State<Mainapi> {
     }
   }
 
+  deleteMethod(Set set) async {
+    final response = await http.post(Uri.parse(
+        'https://chameleonlike-house.000webhostapp.com/login/deletedata.php'));
+    if (response.statusCode == 200) {
+      print("Delete Response : " + response.body);
+      return response.body;
+    } else {
+      return "Error";
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -42,7 +53,11 @@ class _MainapiState extends State<Mainapi> {
           IconButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => RegMyApp()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RegMyApp(),
+                ),
+              ).then((value) => getMethod());
             },
             icon: Icon(Icons.add),
           ),
@@ -79,7 +94,10 @@ class _MainapiState extends State<Mainapi> {
                     trailing: GestureDetector(
                       child: Icon(Icons.delete),
                       onTap: () {
-                        debugPrint('Delete Clicked');
+                        print("aa");
+                        setState(() {
+                          deleteMethod({snap[index]['id']});
+                        });
                       },
                     ));
               });

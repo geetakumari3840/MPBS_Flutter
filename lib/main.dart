@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/modelcrud",
+      initialRoute: "/apisql",
       routes: {
         "/": (context) => HomePage(),
         "/test": (context) => TestPage(),

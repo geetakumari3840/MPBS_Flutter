@@ -6,6 +6,7 @@ import 'package:toast/toast.dart';
 
 class AddEditUser extends StatefulWidget {
   // const AddEditUser({Key? key}) : super(key: key);
+
   final UserModel userModel;
   final int index;
 
@@ -81,11 +82,9 @@ class _AddEditUserState extends State<AddEditUser> {
                     Toast.show('This filed is required.', context,
                         gravity: Toast.CENTER, duration: 2);
                   } else {
-                    UserModel userModel = UserModel(
-                        id: widget.userModel.id,
-                        name: name.text,
-                        email: email.text);
-                    update(userModel);
+                    UserModel userModel =
+                        UserModel(name: name.text, email: email.text, id: '');
+                    add(userModel);
                   }
                 }
               },

@@ -13,11 +13,9 @@ class UserService {
   static const DELETE_URL =
       "https://chameleonlike-house.000webhostapp.com/fluttercrud/delete.php";
 
-
-
-  List<UserModel> userFormJson(String jsonString) {
+  List<UserModel> userFromJson(String jsonString) {
     final data = json.decode(jsonString);
-    return List<UserModel>.from(data.map((item) => UserModel.formJson(item)));
+    return List<UserModel>.from(data.map((item) => UserModel.fromJson(item)));
   }
 
   Future<String> addUser(UserModel userModel) async {
@@ -30,11 +28,12 @@ class UserService {
       return "Error";
     }
   }
+
   Future<List<UserModel>> getUserData() async {
     final response = await http.get(Uri.parse(VIEW_URL));
 
     if (response.statusCode == 200) {
-      List<UserModel> list = userFormJson(response.body);
+      List<UserModel> list = userFromJson(response.body);
 
       return list;
     } else {
@@ -45,7 +44,7 @@ class UserService {
 
   Future<String> updateUser(UserModel userModel) async {
     final response =
-        await http.post(Uri.parse(UPDATE_URL), body: userModel.toJsonUpdate());
+        await http.put(Uri.parse(UPDATE_URL), body: userModel.toJsonUpdate());
     if (response.statusCode == 200) {
       print("Update Response : " + response.body);
       return response.body;

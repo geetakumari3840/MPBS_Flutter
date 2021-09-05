@@ -6,7 +6,7 @@ import 'package:mpbsindia/fluttercurd/service/userService.dart';
 import 'package:toast/toast.dart';
 
 class UserView extends StatefulWidget {
-  // const UserView({Key? key}) : super(key: key);
+  const UserView({Key? key}) : super(key: key);
 
   @override
   _UserViewState createState() => _UserViewState();
@@ -48,12 +48,12 @@ class _UserViewState extends State<UserView> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddEditUser(),
-                ),
-              ).then((value) => getAllUser());
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => AddEditUser(),
+              //   ),
+              // ).then((value) => getAllUser());
             },
             icon: Icon(Icons.add),
           ),
@@ -77,7 +77,7 @@ class _UserViewState extends State<UserView> {
                             index: index,
                           ),
                         ),
-                      ).then((value) => getAllUser());
+                      );
                     },
                     leading: CircleAvatar(
                       child: Text(user.name[0]),
