@@ -27,7 +27,7 @@ class _MainapiState extends State<Mainapi> {
     }
   }
 
-  deleteMethod(Set set) async {
+  deleteMethod(user) async {
     final response = await http.post(Uri.parse(
         'https://chameleonlike-house.000webhostapp.com/login/deletedata.php'));
     if (response.statusCode == 200) {
@@ -81,6 +81,7 @@ class _MainapiState extends State<Mainapi> {
           return ListView.builder(
               itemCount: snap.length,
               itemBuilder: (context, index) {
+                var user = snap[index]['id'];
                 return ListTile(
                     leading: GestureDetector(child: Icon(Icons.edit)),
                     onTap: () {
@@ -94,10 +95,8 @@ class _MainapiState extends State<Mainapi> {
                     trailing: GestureDetector(
                       child: Icon(Icons.delete),
                       onTap: () {
-                        print("aa");
-                        setState(() {
-                          deleteMethod({snap[index]['id']});
-                        });
+                        deleteMethod(user);
+                        print(snap[index]);
                       },
                     ));
               });
