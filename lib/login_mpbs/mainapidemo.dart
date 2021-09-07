@@ -27,15 +27,72 @@ class _MainapiState extends State<Mainapi> {
     }
   }
 
-  deleteMethod(user) async {
-    final response = await http.post(Uri.parse(
-        'https://chameleonlike-house.000webhostapp.com/login/deletedata.php'));
+  // deleteMethod(user) async {
+  //   final response = await http.post(Uri.parse(
+  //       'https://chameleonlike-house.000webhostapp.com/login/deletedata.php'));
+  //   if (response.statusCode == 200) {
+  //     // If the server did return a 200 OK response,
+  //     // then parse the JSON.
+  //     print(response.body);
+  //     return json.decode(response.body);
+  //   } else {
+  //     // If the server did not return a 200 OK response,
+  //     // then throw an exception.
+  //     throw Exception('Failed to load data');
+  //   }
+  // }
+
+  bool visible = false;
+  Future deleteRegistration(int id) async {
+    // Showing CircularProgressIndicator.
+    // setState(() {
+    //   visible = true;
+    // });
+
+    // Getting value from Controller
+    // String name = nameController.text;
+    // String email = emailController.text;
+    // String password = passwordController.text;
+
+    // SERVER API URL
+    var url =
+        'https://chameleonlike-house.000webhostapp.com/login/deletedata.php';
+
+    // Store all data with Param Name.
+    var data = [
+      {'id': 2}
+    ];
+    print(json.encode(data));
+    // Starting Web API Call.
+    var response = await http.post(Uri.parse(url), body: json.encode(data));
+    // print(response);
+    // Getting Server response into variable.
+    // var message = jsonDecode(response.body);
+
+    // If Web call Success than Hide the CircularProgressIndicator.
     if (response.statusCode == 200) {
-      print("Delete Response : " + response.body);
-      return response.body;
-    } else {
-      return "Error";
+      setState(() {
+        visible = false;
+      });
     }
+
+    // Showing Alert Dialog with Response JSON Message.
+    // showDialog(
+    //   context: context,
+    //   builder: (BuildContext context) {
+    //     return AlertDialog(
+    //       title: new Text(message),
+    //       actions: <Widget>[
+    //         ElevatedButton(
+    //           child: new Text("OK"),
+    //           onPressed: () {
+    //             Navigator.of(context).pop();
+    //           },
+    //         ),
+    //       ],
+    //     );
+    //   },
+    // );
   }
 
   @override
@@ -95,8 +152,8 @@ class _MainapiState extends State<Mainapi> {
                     trailing: GestureDetector(
                       child: Icon(Icons.delete),
                       onTap: () {
-                        deleteMethod(user);
-                        print(snap[index]);
+                        deleteRegistration(snap[index]['id']);
+                        print(snap[index]['id']);
                       },
                     ));
               });
