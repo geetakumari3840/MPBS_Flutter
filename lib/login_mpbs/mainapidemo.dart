@@ -60,9 +60,9 @@ class _MainapiState extends State<Mainapi> {
 
     // Store all data with Param Name.
     var data = [
-      {'id': 2}
+      {'id': '2'}
     ];
-    print(json.encode(data));
+    print(data);
     // Starting Web API Call.
     var response = await http.post(Uri.parse(url), body: json.encode(data));
     // print(response);
