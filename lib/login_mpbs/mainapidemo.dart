@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mpbsindia/login_mpbs/edit_user.dart';
 import 'dart:convert';
 
 import 'package:mpbsindia/login_mpbs/registe_user.dart';
@@ -12,13 +13,14 @@ class Mainapi extends StatefulWidget {
 }
 
 class _MainapiState extends State<Mainapi> {
-  getMethod() async {
+  //ADD RECORED
+  Future getMethod() async {
     final response = await http.get(Uri.parse(
         'https://chameleonlike-house.000webhostapp.com/login/viewdata.php'));
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      print(response.body);
+      //print(response.body);
       return json.decode(response.body);
     } else {
       // If the server did not return a 200 OK response,
@@ -27,47 +29,26 @@ class _MainapiState extends State<Mainapi> {
     }
   }
 
-  // deleteMethod(user) async {
-  //   final response = await http.post(Uri.parse(
-  //       'https://chameleonlike-house.000webhostapp.com/login/deletedata.php'));
-  //   if (response.statusCode == 200) {
-  //     // If the server did return a 200 OK response,
-  //     // then parse the JSON.
-  //     print(response.body);
-  //     return json.decode(response.body);
-  //   } else {
-  //     // If the server did not return a 200 OK response,
-  //     // then throw an exception.
-  //     throw Exception('Failed to load data');
-  //   }
-  // }
-
+//DELETE RECORED
   bool visible = false;
-  Future deleteRegistration(int id) async {
+  Future deleteRegistration(snap) async {
     // Showing CircularProgressIndicator.
-    // setState(() {
-    //   visible = true;
-    // });
-
-    // Getting value from Controller
-    // String name = nameController.text;
-    // String email = emailController.text;
-    // String password = passwordController.text;
+    setState(() {
+      visible = true;
+    });
 
     // SERVER API URL
     var url =
         'https://chameleonlike-house.000webhostapp.com/login/deletedata.php';
 
     // Store all data with Param Name.
-    var data = [
-      {'id': '2'}
-    ];
-    print(data);
+    var data = {'id': snap};
+
     // Starting Web API Call.
     var response = await http.post(Uri.parse(url), body: json.encode(data));
     // print(response);
     // Getting Server response into variable.
-    // var message = jsonDecode(response.body);
+    var message = jsonDecode(response.body);
 
     // If Web call Success than Hide the CircularProgressIndicator.
     if (response.statusCode == 200) {
@@ -77,22 +58,69 @@ class _MainapiState extends State<Mainapi> {
     }
 
     // Showing Alert Dialog with Response JSON Message.
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     return AlertDialog(
-    //       title: new Text(message),
-    //       actions: <Widget>[
-    //         ElevatedButton(
-    //           child: new Text("OK"),
-    //           onPressed: () {
-    //             Navigator.of(context).pop();
-    //           },
-    //         ),
-    //       ],
-    //     );
-    //   },
-    // );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(message),
+          actions: <Widget>[
+            ElevatedButton(
+              child: new Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+//UPDATE RECORD
+
+  Future updateRegistration(snap) async {
+    // Showing CircularProgressIndicator.
+    setState(() {
+      visible = true;
+    });
+
+    // SERVER API URL
+    var url =
+        'https://chameleonlike-house.000webhostapp.com/login/updatedata.php';
+
+    // Store all data with Param Name.
+    var data = {'id': snap};
+
+    // Starting Web API Call.
+    var response = await http.post(Uri.parse(url), body: json.encode(data));
+    //print(data);
+    // Getting Server response into variable.
+    var message = jsonDecode(response.body);
+
+    // If Web call Success than Hide the CircularProgressIndicator.
+    if (response.statusCode == 200) {
+      setState(() {
+        visible = false;
+      });
+    }
+
+    // Showing Alert Dialog with Response JSON Message.
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(message),
+          actions: <Widget>[
+            ElevatedButton(
+              child: new Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -138,11 +166,22 @@ class _MainapiState extends State<Mainapi> {
           return ListView.builder(
               itemCount: snap.length,
               itemBuilder: (context, index) {
-                var user = snap[index]['id'];
+                // var user = snap[index]['id'];
                 return ListTile(
                     leading: GestureDetector(child: Icon(Icons.edit)),
                     onTap: () {
-                      debugPrint('Edit Clicked');
+                      // updateRegistration(snap[index]);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => new EditMyApp(
+                            // value: snap[index]['name'],
+                            value: snap[index],
+                          ),
+                        ),
+                      );
+
+                      print(snap[index]['name']);
                     },
                     // title: CircleAvatar(
                     //   child: Text("${snap[index]['name'][1]}"),
@@ -153,7 +192,7 @@ class _MainapiState extends State<Mainapi> {
                       child: Icon(Icons.delete),
                       onTap: () {
                         deleteRegistration(snap[index]['id']);
-                        print(snap[index]['id']);
+                        // print(snap[index]['id']);
                       },
                     ));
               });
