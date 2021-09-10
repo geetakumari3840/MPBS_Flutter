@@ -42,7 +42,7 @@ class RegisterUserState extends State {
 
     // Store all data with Param Name.
     var data = {'name': name, 'email': email, 'password': password};
-
+    print(data);
     // Starting Web API Call.
     var response = await http.post(Uri.parse(url), body: json.encode(data));
 
