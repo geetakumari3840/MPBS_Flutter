@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mpbsindia/fluttercurd/userview.dart';
+import 'package:mpbsindia/login_mpbs/mainapidemo.dart';
 import 'package:mpbsindia/login_mpbs/registe_user.dart';
 import 'package:mpbsindia/subpages/sub_daa_info.dart';
 
@@ -212,7 +212,7 @@ class InfoPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UserView()),
+                      MaterialPageRoute(builder: (context) => Mainapi()),
                     );
                   },
                   child: Text(

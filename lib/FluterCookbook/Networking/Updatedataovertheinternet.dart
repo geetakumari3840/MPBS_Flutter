@@ -56,20 +56,20 @@ class Album {
   }
 }
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class UpdateMyApp extends StatefulWidget {
+  const UpdateMyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() {
-    return _MyAppState();
+  _UpdateMyAppState createState() {
+    return _UpdateMyAppState();
   }
 }
 
-class _MyAppState extends State<MyApp> {
+class _UpdateMyAppState extends State<UpdateMyApp> {
   final TextEditingController _controller = TextEditingController();
   late Future<Album> _futureAlbum;
 

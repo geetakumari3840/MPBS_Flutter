@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mpbsindia/login_mpbs/edit_user.dart';
+import 'package:mpbsindia/login_mpbs/edit_user_test.dart';
 import 'dart:convert';
 
 import 'package:mpbsindia/login_mpbs/registe_user.dart';
@@ -14,27 +14,28 @@ class Mainapi extends StatefulWidget {
 
 class _MainapiState extends State<Mainapi> {
   //ADD RECORED
-  Future getMethod() async {
+  getMethod() async {
+    // print("load data");
     final response = await http.get(Uri.parse(
         'https://chameleonlike-house.000webhostapp.com/login/viewdata.php'));
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      //print(response.body);
+      // print(response.body);
       return json.decode(response.body);
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load data');
+      throw Exception('Failed to load data....//');
     }
   }
 
 //DELETE RECORED
-  bool visible = false;
+  bool dvisible = false;
   Future deleteRegistration(snap) async {
     // Showing CircularProgressIndicator.
     setState(() {
-      visible = true;
+      dvisible = true;
     });
 
     // SERVER API URL
@@ -53,7 +54,7 @@ class _MainapiState extends State<Mainapi> {
     // If Web call Success than Hide the CircularProgressIndicator.
     if (response.statusCode == 200) {
       setState(() {
-        visible = false;
+        dvisible = false;
       });
     }
 
@@ -77,11 +78,11 @@ class _MainapiState extends State<Mainapi> {
   }
 
 //UPDATE RECORD
-
+  bool uvisible = true;
   Future updateRegistration(snap) async {
     // Showing CircularProgressIndicator.
     setState(() {
-      visible = true;
+      uvisible = true;
     });
 
     // SERVER API URL
@@ -100,7 +101,7 @@ class _MainapiState extends State<Mainapi> {
     // If Web call Success than Hide the CircularProgressIndicator.
     if (response.statusCode == 200) {
       setState(() {
-        visible = false;
+        uvisible = false;
       });
     }
 
@@ -174,14 +175,12 @@ class _MainapiState extends State<Mainapi> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => new EditMyApp(
-                            // value: snap[index]['name'],
-                            value: snap[index],
+                          builder: (context) => EditUserTest(
+                            value: snap[index]['id'],
                           ),
                         ),
                       );
-
-                      print(snap[index]['name']);
+                      // print("previous -> " + snap[index]['id']);
                     },
                     // title: CircleAvatar(
                     //   child: Text("${snap[index]['name'][1]}"),

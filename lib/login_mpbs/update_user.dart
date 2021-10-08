@@ -6,12 +6,15 @@ import 'package:http/http.dart' as http;
 
 Future<Album> fetchAlbum() async {
   final response = await http.get(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    Uri.parse(
+        'https://chameleonlike-house.000webhostapp.com/login/fatchdata.php'),
   );
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
+    print(response.body);
+
     return Album.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
@@ -20,14 +23,15 @@ Future<Album> fetchAlbum() async {
   }
 }
 
-Future<Album> updateAlbum(String title) async {
+Future<Album> updateAlbum(String name) async {
   final response = await http.put(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    Uri.parse(
+        'https://chameleonlike-house.000webhostapp.com/login/updatedata.php'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'title': title,
+      'name': name,
     }),
   );
 
@@ -44,14 +48,14 @@ Future<Album> updateAlbum(String title) async {
 
 class Album {
   final int id;
-  final String title;
+  final String name;
 
-  Album({required this.id, required this.title});
+  Album({required this.id, required this.name});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
       id: json['id'],
-      title: json['title'],
+      name: json['name'],
     );
   }
 }
@@ -82,7 +86,7 @@ class _UpdateMyAppState extends State<UpdateMyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Update Data Example',
+      title: 'Update Data Example 111',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -101,7 +105,7 @@ class _UpdateMyAppState extends State<UpdateMyApp> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(snapshot.data!.title),
+                      Text(snapshot.data!.name),
                       TextField(
                         controller: _controller,
                         decoration: const InputDecoration(
