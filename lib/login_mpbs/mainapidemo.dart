@@ -14,8 +14,9 @@ class Mainapi extends StatefulWidget {
 
 class _MainapiState extends State<Mainapi> {
   //ADD RECORED
+
   getMethod() async {
-    // print("load data");
+    print("load data");
     final response = await http.get(Uri.parse(
         'https://chameleonlike-house.000webhostapp.com/login/viewdata.php'));
     if (response.statusCode == 200) {
@@ -77,57 +78,13 @@ class _MainapiState extends State<Mainapi> {
     );
   }
 
-//UPDATE RECORD
-  bool uvisible = true;
-  Future updateRegistration(snap) async {
-    // Showing CircularProgressIndicator.
-    setState(() {
-      uvisible = true;
-    });
-
-    // SERVER API URL
-    var url =
-        'https://chameleonlike-house.000webhostapp.com/login/updatedata.php';
-
-    // Store all data with Param Name.
-    var data = {'id': snap};
-
-    // Starting Web API Call.
-    var response = await http.post(Uri.parse(url), body: json.encode(data));
-    //print(data);
-    // Getting Server response into variable.
-    var message = jsonDecode(response.body);
-
-    // If Web call Success than Hide the CircularProgressIndicator.
-    if (response.statusCode == 200) {
-      setState(() {
-        uvisible = false;
-      });
-    }
-
-    // Showing Alert Dialog with Response JSON Message.
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: new Text(message),
-          actions: <Widget>[
-            ElevatedButton(
-              child: new Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   void initState() {
     super.initState();
-    getMethod();
+    getMethod().whenComplete(() {
+      setState(() {});
+    });
+    // getMethod();
   }
 
   @override
@@ -143,7 +100,7 @@ class _MainapiState extends State<Mainapi> {
                 MaterialPageRoute(
                   builder: (context) => RegMyApp(),
                 ),
-              ).then((value) => getMethod());
+              ).then((value) => setState(() {}));
             },
             icon: Icon(Icons.add),
           ),

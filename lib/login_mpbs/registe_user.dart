@@ -53,6 +53,9 @@ class RegisterUserState extends State {
     if (response.statusCode == 200) {
       setState(() {
         visible = false;
+        nameController.text = '';
+        emailController.text = '';
+        passwordController.text = '';
       });
     }
 
