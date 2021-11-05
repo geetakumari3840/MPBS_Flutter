@@ -92,6 +92,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "date_field",
+      "rootUri": "file:///E:/Software/flutter/.pub-cache/hosted/pub.dartlang.org/date_field-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "date_time_picker",
+      "rootUri": "file:///E:/Software/flutter/.pub-cache/hosted/pub.dartlang.org/date_time_picker-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "datetime_picker_formfield",
+      "rootUri": "file:///E:/Software/flutter/.pub-cache/hosted/pub.dartlang.org/datetime_picker_formfield-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fading_edge_scrollview",
       "rootUri": "file:///E:/Software/flutter/.pub-cache/hosted/pub.dartlang.org/fading_edge_scrollview-2.0.0",
       "packageUri": "lib/",
@@ -142,6 +160,12 @@
     {
       "name": "flutter_launcher_icons",
       "rootUri": "file:///E:/Software/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.9.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_localizations",
+      "rootUri": "file:///E:/Software/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -566,7 +590,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-07T16:58:00.331242Z",
+  "generated": "2021-10-30T17:02:44.982406Z",
   "generator": "pub",
   "generatorVersion": "2.14.3"
 }

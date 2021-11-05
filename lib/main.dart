@@ -9,9 +9,9 @@ import 'package:mpbsindia/codeigniter_login/login.dart';
 import 'package:mpbsindia/codeigniter_login/screens/home.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signin.dart';
 import 'package:mpbsindia/codeigniter_login/screens/signup.dart';
+import 'package:mpbsindia/login_mpbs/register_mpbs.dart';
 import 'package:mpbsindia/login_mpbs/send_data.dart';
 import 'package:mpbsindia/login_mpbs/update_user.dart';
-import 'package:mpbsindia/login_mpbs/registe_user.dart';
 import 'package:mpbsindia/test_page/codepen_nav.dart';
 import 'package:mpbsindia/test_page/fatch_data_internet.dart';
 import 'package:mpbsindia/test_page/test1.dart';
@@ -47,14 +47,14 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/apisql",
+      initialRoute: "/regmpbs",
       routes: {
         "/": (context) => HomePage(),
         "/test": (context) => TestPage(),
         "/codepennav": (context) => CodePenNav(),
         "/resp": (context) => ResPage(),
         "/apisql": (context) => Mainapi(),
-        "/apisqll": (context) => RegMyApp(),
+        "/regmpbs": (context) => RegMyMpbs(),
         "/login": (context) => MyAppc(),
         "/modelcrud": (context) => UserView(),
         "/deletedata": (context) => DeleteMyApp(),
