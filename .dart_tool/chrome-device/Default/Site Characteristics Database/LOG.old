@@ -1,9 +1,2 @@
-2021/09/19-09:27:38.456 1908 Reusing MANIFEST C:\Users\user\AppData\Local\Temp\flutter_tools.aa9e2683\flutter_tools_chrome_device.e49d33ff\Default\Site Characteristics Database/MANIFEST-000001
-2021/09/19-09:27:38.458 1dec Compacting 4@0 + 0@1 files
-2021/09/19-09:27:38.467 1dec Generated table #11@0: 11 keys, 760 bytes
-2021/09/19-09:27:38.468 1dec Compacted 4@0 + 0@1 files => 760 bytes
-2021/09/19-09:27:38.477 1dec compacted to: files[ 0 1 0 0 0 0 0 ]
-2021/09/19-09:27:38.478 1dec Delete type=2 #4
-2021/09/19-09:27:38.478 1dec Delete type=2 #6
-2021/09/19-09:27:38.478 1dec Delete type=2 #7
-2021/09/19-09:27:38.478 1dec Delete type=2 #8
+2021/11/08-14:35:06.629 3108 Creating DB C:\Users\user\AppData\Local\Temp\flutter_tools.2071aef1\flutter_tools_chrome_device.1a457566\Default\Site Characteristics Database since it was missing.
+2021/11/08-14:35:06.714 3108 Reusing MANIFEST C:\Users\user\AppData\Local\Temp\flutter_tools.2071aef1\flutter_tools_chrome_device.1a457566\Default\Site Characteristics Database/MANIFEST-000001

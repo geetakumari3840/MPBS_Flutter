@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:date_field/date_field.dart';
+// import 'package:date_field/date_field.dart';
+// ignore: import_of_legacy_library_into_null_safe
+// import 'package:email_validator/email_validator.dart';
 
 class RegMyMpbs extends StatelessWidget {
   @override
@@ -19,7 +22,7 @@ class RegisterUser extends StatefulWidget {
 class RegisterUserState extends State {
   Future fetchCaptch() async {
     final response = await http.get(
-      Uri.parse("http://192.168.29.157/MPBSINDIA_ORG/Flutterreg/Regfrom"),
+      Uri.parse("https://mpbsindia.org/Flutterreg/Regfrom"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -37,20 +40,20 @@ class RegisterUserState extends State {
   }
 
   // Boolean variable for CircularProgressIndicator.
-  bool visible = false;
-  dynamic setdates = "";
+  // bool visible = false;
+
   // Getting value from TextField widget.
+  dynamic setdates = "";
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final mobileController = TextEditingController();
-  // dynamic setdates;
   final captchController = TextEditingController();
 
   Future userRegistration() async {
     // Showing CircularProgressIndicator.
-    setState(() {
-      visible = true;
-    });
+    // setState(() {
+    //   visible = true;
+    // });
 
     // Getting value from Controller
     String name = nameController.text;
@@ -59,7 +62,7 @@ class RegisterUserState extends State {
     String captcha = captchController.text;
 
     // SERVER API URL
-    var url = 'http://192.168.29.157/MPBSINDIA_ORG/Flutterreg/submitmpbss';
+    var url = 'https://mpbsindia.org/flutterreg/test';
 
     // Store all data with Param Name.
     var data = {
@@ -68,6 +71,7 @@ class RegisterUserState extends State {
       'mobile': mobile,
       'dob': setdates.toString(),
       'captcha': captcha,
+      'createdate': DateTime.now().toString(),
     };
     print(data);
     // print(name);
@@ -80,14 +84,12 @@ class RegisterUserState extends State {
 
     // If Web call Success than Hide the CircularProgressIndicator.
     if (response.statusCode == 200) {
-      setState(() {
-        visible = false;
-        nameController.text = '';
-        emailController.text = '';
-        mobileController.text = '';
-        DateTime.now();
-        captchController.text = '';
-      });
+      // visible = false;
+      // _formKey.currentState?.reset();
+      // nameController.text = '';
+      // emailController.text = '';
+      // mobileController.text = '';
+      // captchController.text = '';
     }
 
     // Showing Alert Dialog with Response JSON Message.
@@ -101,6 +103,9 @@ class RegisterUserState extends State {
               child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
+                setState(() {
+                  // fetchCaptch();
+                });
               },
             ),
           ],
@@ -117,82 +122,113 @@ class RegisterUserState extends State {
     });
   }
 
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child: Center(
+            child: Form(
+      key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Padding(
-          //     padding: const EdgeInsets.all(12.0),
-          //     child: Text('MPBS Registration Form',
-          //         style: TextStyle(fontSize: 21))),
-          Divider(),
-          Container(
-              // width: 290,
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                controller: nameController,
-                autocorrect: true,
-                decoration: InputDecoration(
-                    hintText: 'Your Full Name ',
-                    prefixIcon: Icon(Icons.account_box_rounded)),
-              )),
-          Container(
-              // width: 290,
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                controller: emailController,
-                autocorrect: true,
-                decoration: InputDecoration(
-                    hintText: 'Email Id', prefixIcon: Icon(Icons.email)),
-              )),
-          Container(
-              // width: 280,
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                controller: mobileController,
-                autocorrect: true,
-                decoration: InputDecoration(
-                    hintText: 'Mobile No.',
-                    prefixIcon: Icon(Icons.mobile_friendly)),
-              )),
           // Container(
-          //     width: 280,
-          //     padding: EdgeInsets.all(10.0),
-          //     child: TextField(
-          //       controller: dobController,
-          //       autocorrect: true,
-          //       decoration:
-          //           const InputDecoration(labelText: 'Your Date of Birth'),
-          //     )),
-          // Container(
-          //   child: Image.network(captchcode.toString(), scale: 1.0),
+          //   padding: EdgeInsets.all(10.0),
+          //   child: TextFormField(
+          //     controller: nameController,
+          //     autocorrect: true,
+          //     inputFormatters: [
+          //       // ignore: deprecated_member_use
+          //       new WhitelistingTextInputFormatter(RegExp("[a-zA-Z ]")),
+          //     ],
+          //     decoration: InputDecoration(
+          //         hintText: 'Your Full Name ',
+          //         prefixIcon: Icon(Icons.account_box_rounded)),
+          //     // The validator receives the text that the user has entered.
+          //     keyboardType: TextInputType.text,
+          //     // inputFormatters: <TextInputFormatter>[
+          //     //   FilteringTextInputFormatter.singleLineFormatter
+          //     // ], //  /
+          //     validator: (value) {
+          //       if (value == null || value.isEmpty) {
+          //         return 'Please enter some text';
+          //       }
+          //       return null;
+          //     },
+          //   ),
           // ),
-          Container(
-            // width: 280,
-            padding: EdgeInsets.all(10.0),
-            child: DateTimeFormField(
-              decoration: const InputDecoration(
-                hintStyle: TextStyle(color: Colors.black45),
-                errorStyle: TextStyle(color: Colors.redAccent),
-                border: UnderlineInputBorder(),
-                prefixIcon: Icon(Icons.event_note),
-                labelText: 'Date of Birth',
-              ),
-              mode: DateTimeFieldPickerMode.date,
-              autovalidateMode: AutovalidateMode.always,
-              // validator: (e) =>
-              //     (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
-              onDateSelected: (DateTime value) {
-                setState(() {
-                  setdates = value;
-                });
-                print(value);
-              },
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(10.0),
+          //   child: TextFormField(
+          //     controller: mobileController,
+          //     autocorrect: true,
+          //     decoration: InputDecoration(
+          //         hintText: 'Mobile No.',
+          //         prefixIcon: Icon(Icons.mobile_friendly)),
+          //     keyboardType: TextInputType.number,
+          //     inputFormatters: <TextInputFormatter>[
+          //       FilteringTextInputFormatter.digitsOnly,
+          //     ],
+          //     validator: (value) {
+          //       if (value == null || value.isEmpty) {
+          //         return 'Please enter Mobile No.';
+          //       } else if (value.runes.length == 10) {
+          //         return null;
+          //       } else {
+          //         return 'Please enter 10 digit Mobile';
+          //       }
+          //     },
+          //   ),
+          // ),
+          // Container(
+          //   padding: EdgeInsets.all(10.0),
+          //   child: TextFormField(
+          //     controller: emailController,
+          //     autocorrect: true,
+          //     decoration: InputDecoration(
+          //         hintText: 'Email Id',
+          //         prefixIcon: Icon(Icons
+          //             .email)), // The validator receives the text that the user has entered.
+          //     validator: (value) => EmailValidator.validate(value!)
+          //         ? null
+          //         : "Please enter a valid email",
+          //   ),
+          // ),
+          // Container(
+          //   // width: 280,
+          //   padding: EdgeInsets.all(10.0),
+          //   child: DateTimeFormField(
+          //     // controller: dobController,
+          //     decoration: const InputDecoration(
+          //       hintStyle: TextStyle(color: Colors.black45),
+          //       errorStyle: TextStyle(color: Colors.redAccent),
+          //       border: UnderlineInputBorder(),
+          //       prefixIcon: Icon(Icons.event_note),
+          //       labelText: 'Date of Birth',
+          //     ),
+          //     mode: DateTimeFieldPickerMode.date,
+          //     autovalidateMode: AutovalidateMode.always,
+          //     // initialDate: DateTime(2017),
+          //     // onSaved: (value) {
+          //     //   debugPrint(value.toString());
+          //     // },
+          //     onDateSelected: (DateTime dvalue) {
+          //       if (dvalue.year == 2021) {
+          //         setdates = "${dvalue.day}/${dvalue.month}/${dvalue.year}";
+          //       } else {
+          //         setdates = "";
+          //       }
+          //       // print(value);
+          //     },
+          //     validator: (val) {
+          //       if (val != null) {
+          //         return null;
+          //       } else {
+          //         return 'Date Field is Empty';
+          //       }
+          //     },
+          //   ),
+          // ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(8.0),
@@ -219,25 +255,61 @@ class RegisterUserState extends State {
           Container(
               // width: 280,
               padding: EdgeInsets.all(10.0),
-              child: TextField(
+              child: TextFormField(
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Captch';
+                  } else if (value.runes.length == 4) {
+                    return null;
+                  } else {
+                    return 'Please enter 4 digit Captch';
+                  }
+                },
                 controller: captchController,
                 autocorrect: true,
                 decoration: InputDecoration(
                     hintText: 'Captch',
                     prefixIcon: Icon(Icons.local_convenience_store_outlined)),
               )),
-          ElevatedButton(
-            onPressed: userRegistration,
-            // color: Colors.green,
-            // textColor: Colors.white,
-            // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: Text('Registered'),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(vertical: 16.0),
+          //   child: ElevatedButton(
+          //     onPressed: () {
+          //       // Validate returns true if the form is valid, or false otherwise.
+          //       if (_formKey.currentState!.validate()) {
+          //         // If the form is valid, display a snackbar. In the real world,
+          //         // you'd often call a server or save the information in a database.
+          //         ScaffoldMessenger.of(context).showSnackBar(
+          //           const SnackBar(content: Text('Processing Data')),
+          //         );
+          //       }
+          //     },
+          //     child: const Text('Submit'),
+          //   ),
+          // ),
+
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  userRegistration();
+                }
+              },
+              // color: Colors.green,
+              // textColor: Colors.white,
+              // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: Text('Registered'),
+            ),
           ),
-          Visibility(
-              visible: visible,
-              child: Container(
-                  margin: EdgeInsets.only(bottom: 30),
-                  child: CircularProgressIndicator())),
+          // Visibility(
+          //     visible: visible,
+          //     child: Container(
+          //         margin: EdgeInsets.only(bottom: 30),
+          //         child: CircularProgressIndicator())),
         ],
       ),
     )));

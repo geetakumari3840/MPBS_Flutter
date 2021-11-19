@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     mobile: Column(
                       children: [
                         PicShow(),
-                        InfoPage(),
+                        // InfoPage(),
                         AboutUsList(),
                         SubDonationOne(),
                         DonationList(),
